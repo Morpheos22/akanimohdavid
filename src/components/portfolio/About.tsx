@@ -1,3 +1,5 @@
+import portrait from "@/assets/portrait.webp";
+
 const credentials = [
   { text: "Google Certified Educator", sub: "Level 1 & Level 2" },
   { text: "Co-Founder", sub: "Metabuilder Solutions Limited, Abuja" },
