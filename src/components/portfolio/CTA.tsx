@@ -1,5 +1,6 @@
 import { useState } from "react";
 import rabbit from "@/assets/rabbit.jpg";
+import portrait from "@/assets/portrait.webp";
 
 const CTA = () => {
   const [hopping, setHopping] = useState(false);
@@ -14,6 +15,7 @@ const CTA = () => {
   return (
     <section id="consult" className="bg-background py-[120px] px-[6vw] text-center relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse,hsl(200_100%_50%/0.07)_0%,transparent_65%)] pointer-events-none" />
+      <img src={portrait} alt="" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] opacity-[0.04] brightness-0 invert pointer-events-none select-none" />
       <div className="relative z-10">
         <div className="text-[10px] font-semibold tracking-[0.25em] uppercase text-primary mb-[18px]">Let's Build Together</div>
         <h2 className="font-syne text-[clamp(34px,5vw,62px)] font-extrabold leading-[1.05] tracking-tight mb-[18px]">
@@ -29,7 +31,7 @@ const CTA = () => {
             className={`flex items-center gap-3.5 bg-transparent border border-primary/[0.35] text-foreground font-syne text-[13px] font-bold tracking-[0.12em] uppercase px-8 py-4 rounded-sm hover:bg-primary/[0.06] hover:border-primary hover:shadow-[0_0_40px_hsl(200_100%_50%/0.15)] transition-all relative z-10 ${hopping ? "rabbit-hopping opacity-0 pointer-events-none" : ""}`}
             style={hopping ? { transition: "opacity 0.1s 0.45s" } : {}}
           >
-            <img src={rabbit} alt="White Rabbit" className="w-8 h-8 object-contain brightness-0 invert" />
+            <img src={rabbit} alt="White Rabbit" className="w-9 h-9 object-contain brightness-0 invert" />
             Follow the White Rabbit
           </button>
 

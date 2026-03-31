@@ -1,3 +1,5 @@
+import portrait from "@/assets/portrait.webp";
+
 const credentials = [
   { text: "Google Certified Educator", sub: "Level 1 & Level 2" },
   { text: "Co-Founder", sub: "Metabuilder Solutions Limited, Abuja" },
@@ -12,7 +14,8 @@ const credentials = [
 ];
 
 const About = () => (
-  <section id="about" className="py-24 px-[6vw] bg-card">
+  <section id="about" className="py-24 px-[6vw] bg-card relative overflow-hidden">
+    <img src={portrait} alt="" className="absolute top-1/2 right-0 -translate-y-1/2 w-[350px] opacity-[0.03] brightness-0 invert pointer-events-none select-none" />
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
       <div className="reveal">
         <div className="flex items-center gap-3 mb-3.5">
