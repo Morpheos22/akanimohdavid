@@ -28,7 +28,8 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="py-24 px-[6vw] bg-background">
+  <section id="services" className="py-24 px-[6vw] bg-background relative overflow-hidden">
+    <img src={portrait} alt="" className="absolute bottom-0 left-0 w-[300px] opacity-[0.03] brightness-0 invert pointer-events-none select-none" />
     <div className="flex items-center gap-3 mb-3.5 reveal">
       <div className="w-[26px] h-px bg-primary" />
       <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-primary">What I Do</span>

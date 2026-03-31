@@ -1,5 +1,6 @@
 import { useState } from "react";
 import rabbit from "@/assets/rabbit.jpg";
+import portrait from "@/assets/portrait.webp";
 
 const CTA = () => {
   const [hopping, setHopping] = useState(false);
