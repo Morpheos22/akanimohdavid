@@ -1,9 +1,14 @@
+import sherwynImg from "@/assets/sherwyn.png";
+import faizaImg from "@/assets/faiza.jpg";
+import liamImg from "@/assets/liam.jpg";
+
 const reviews = [
   {
     initials: "SS",
     name: "Sherwyn Singh",
     role: "Founder, Automagikal",
     source: "Google Review",
+    photo: sherwynImg,
     quote: "I brought them a digital headache; they handed me a scalable, elegant solution. The team operates with a rare mix of high-level professionalism and sharp, no-nonsense execution. If you want top-tier results without the typical tech jargon, this is the team.",
   },
   {
@@ -25,6 +30,7 @@ const reviews = [
     name: "Skiiwalka Liam",
     role: "Verified Client",
     source: "Google Review",
+    photo: liamImg,
     quote: "Finding a tech team that actually understands both flawless software development and digital strategy is like finding a unicorn. Luckily, Metabuilder Solutions is that unicorn. Fast, sharp, and wickedly smart. They don't just build solutions; they build advantages.",
   },
   {
@@ -39,6 +45,7 @@ const reviews = [
     name: "Faiza Fadipe",
     role: "Verified Client",
     source: "Google Review",
+    photo: faizaImg,
     quote: "Highly recommend! It's so good and easy to use.",
   },
 ];
@@ -62,9 +69,13 @@ const Testimonials = () => (
           <div className="text-primary text-xs mb-3.5 tracking-[2px]">★★★★★</div>
           <p className="text-[13.5px] font-light text-foreground/[0.68] leading-[1.8] mb-5 italic">{r.quote}</p>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-primary/[0.12] border border-primary/25 rounded-full flex items-center justify-center font-syne text-xs font-bold text-primary shrink-0">
-              {r.initials}
-            </div>
+            {r.photo ? (
+              <img src={r.photo} alt={r.name} className="w-9 h-9 rounded-full object-cover border border-primary/25 shrink-0" />
+            ) : (
+              <div className="w-9 h-9 bg-primary/[0.12] border border-primary/25 rounded-full flex items-center justify-center font-syne text-xs font-bold text-primary shrink-0">
+                {r.initials}
+              </div>
+            )}
             <div>
               <div className="text-[13px] font-semibold text-foreground mb-px">{r.name}</div>
               <div className="text-[11px] font-light text-muted-foreground">{r.role}</div>
