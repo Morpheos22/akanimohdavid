@@ -1,4 +1,4 @@
-import portrait from "@/assets/portrait.png";
+import portrait from "@/assets/portrait.webp";
 
 const stats = [
   { num: "3", suffix: "+", label: "Live Ventures" },
