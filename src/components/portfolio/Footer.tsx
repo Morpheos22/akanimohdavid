@@ -3,7 +3,7 @@ import logo from "@/assets/logo.jpg";
 const Footer = () => (
   <footer className="bg-card border-t border-primary/[0.08] px-[6vw] py-7 flex items-center justify-between flex-wrap gap-3 md:flex-row flex-col text-center">
     <div>
-      <img src={logo} alt="Metabuilder Solutions Limited" className="h-[22px] brightness-0 invert" />
+      <img src={logo} alt="Metabuilder Solutions Limited" className="h-[22px] invert mix-blend-screen" />
     </div>
     <div className="text-[11px] text-muted-foreground font-light">
       © 2026 Akanimoh David — Metabuilder Solutions Limited

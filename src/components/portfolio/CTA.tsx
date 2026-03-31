@@ -31,7 +31,7 @@ const CTA = () => {
             className={`flex items-center gap-3.5 bg-transparent border border-primary/[0.35] text-foreground font-syne text-[13px] font-bold tracking-[0.12em] uppercase px-8 py-4 rounded-sm hover:bg-primary/[0.06] hover:border-primary hover:shadow-[0_0_40px_hsl(200_100%_50%/0.15)] transition-all relative z-10 ${hopping ? "rabbit-hopping opacity-0 pointer-events-none" : ""}`}
             style={hopping ? { transition: "opacity 0.1s 0.45s" } : {}}
           >
-            <img src={rabbit} alt="White Rabbit" className="w-9 h-9 object-contain brightness-0 invert" />
+            <img src={rabbit} alt="White Rabbit" className="w-9 h-9 object-contain invert mix-blend-screen" />
             Follow the White Rabbit
           </button>
 
