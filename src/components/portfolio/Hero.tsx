@@ -69,11 +69,11 @@ const Hero = () => (
       </div>
     </div>
 
-    <div className="relative z-[1] hidden lg:flex items-center justify-center animate-fade-up animate-fade-up-4">
-      <div className="relative w-full max-w-[380px]">
+    <div className="relative z-[1] flex items-center justify-center animate-fade-up animate-fade-up-4">
+      <div className="relative w-full max-w-[280px] lg:max-w-[380px] mx-auto">
         <div className="absolute inset-[-2px] border border-primary/20 rounded-md pointer-events-none" />
         <div className="absolute -top-5 -right-5 w-[120px] h-[120px] border border-primary/[0.12] rounded-full pointer-events-none" />
-        <img src={portrait} alt="Akanimoh David" className="w-full rounded-sm contrast-[1.05] brightness-110" />
+        <img src={portrait} alt="Akanimoh David" className="w-full rounded-sm" />
         <div className="absolute -bottom-4 left-5 bg-secondary border border-primary/20 px-4 py-2.5 rounded-sm flex items-center gap-2">
           <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot" />
           <span className="text-[11px] font-medium text-foreground/[0.68]">Available for Engagements</span>
