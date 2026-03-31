@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[200] px-[6vw] h-16 flex items-center justify-between bg-background/90 backdrop-blur-[18px] border-b border-primary/[0.08]">
       <a href="#home">
-        <img src={logo} alt="Metabuilder Solutions Limited" className="h-7 mix-blend-screen" />
+        <img src={logo} alt="Metabuilder Solutions Limited" className="h-7 invert mix-blend-screen" />
       </a>
       <ul className="hidden md:flex gap-7 list-none">
         {links.map((l) => (
