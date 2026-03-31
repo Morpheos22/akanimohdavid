@@ -1,3 +1,5 @@
+import portrait from "@/assets/portrait.webp";
+
 const services = [
   {
     num: "01",
