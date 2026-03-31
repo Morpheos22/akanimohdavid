@@ -14,6 +14,7 @@ const CTA = () => {
   return (
     <section id="consult" className="bg-background py-[120px] px-[6vw] text-center relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse,hsl(200_100%_50%/0.07)_0%,transparent_65%)] pointer-events-none" />
+      <img src={portrait} alt="" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] opacity-[0.04] brightness-0 invert pointer-events-none select-none" />
       <div className="relative z-10">
         <div className="text-[10px] font-semibold tracking-[0.25em] uppercase text-primary mb-[18px]">Let's Build Together</div>
         <h2 className="font-syne text-[clamp(34px,5vw,62px)] font-extrabold leading-[1.05] tracking-tight mb-[18px]">
