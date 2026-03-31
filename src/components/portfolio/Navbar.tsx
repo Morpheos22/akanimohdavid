@@ -35,7 +35,7 @@ const Navbar = () => {
         onClick={scrollToCTA}
         className="flex items-center gap-2 bg-transparent border border-primary/30 text-primary px-[18px] py-2 rounded-sm font-syne text-[11px] font-bold tracking-[0.12em] uppercase hover:bg-primary/[0.08] hover:border-primary transition-colors"
       >
-        <img src={rabbit} alt="rabbit" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)', mixBlendMode: 'screen' }} />
+        <img src={rabbit} alt="rabbit" className="w-5 h-5 mix-blend-screen" />
         Follow the White Rabbit
       </button>
     </nav>
