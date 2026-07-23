@@ -3,10 +3,12 @@ import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
 import Services from "@/components/portfolio/Services";
 import Projects from "@/components/portfolio/Projects";
+import Showcase from "@/components/portfolio/Showcase";
 import Speaking from "@/components/portfolio/Speaking";
 import Testimonials from "@/components/portfolio/Testimonials";
 import CTA from "@/components/portfolio/CTA";
 import Footer from "@/components/portfolio/Footer";
+import PanelDivider from "@/components/portfolio/PanelDivider";
 import { useReveal } from "@/hooks/useReveal";
 
 const Index = () => {
@@ -16,11 +18,19 @@ const Index = () => {
     <div ref={ref} className="relative">
       <Navbar />
       <Hero />
+      <PanelDivider />
       <About />
+      <PanelDivider />
       <Services />
+      <PanelDivider />
       <Projects />
+      <PanelDivider />
+      <Showcase />
+      <PanelDivider />
       <Speaking />
+      <PanelDivider />
       <Testimonials />
+      <PanelDivider />
       <CTA />
       <Footer />
     </div>

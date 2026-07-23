@@ -1,3 +1,5 @@
+import PanelSection from "./PanelSection";
+
 const appearances = [
   { year: "2026", title: "Collective Lab × GDG Buildathon", org: "Abuja — Day 2 Lead Facilitator", role: "Facilitator" },
   { year: "2026", title: "Nile University Alumni Startup Competition", org: "Nile University of Nigeria, Abuja", role: "Judge" },
@@ -16,31 +18,24 @@ const topics = [
 ];
 
 const Speaking = () => (
-  <section id="speaking" className="py-24 px-[6vw] bg-background">
-    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-16 items-start">
+  <PanelSection id="speaking" label="Stage" eyebrow="Speaking & Facilitation">
+    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
       <div className="reveal">
-        <div className="flex items-center gap-3 mb-3.5">
-          <div className="w-[26px] h-px bg-primary" />
-          <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-primary">Speaking & Facilitation</span>
-        </div>
-        <h2 className="font-syne text-[clamp(30px,3.8vw,50px)] font-extrabold leading-[1.05] tracking-tight mb-3.5">
-          In the Room<br />Where It Happens.
-        </h2>
-        <p className="text-[15px] font-light text-foreground/[0.68] leading-[1.85] mb-9">
-          I bring <strong className="text-foreground font-medium">clarity to complex AI conversations</strong> in rooms that matter — from university buildathons to alumni associations to corporate strategy sessions. Direct, systems-oriented, and grounded in African realities.
+        <p className="text-[15px] font-light text-foreground/[0.72] leading-[1.85] mb-8">
+          I bring <strong className="text-foreground font-medium">clarity to complex AI conversations</strong> in rooms that matter — from university buildathons to alumni associations to corporate strategy sessions.
         </p>
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-1">
           {appearances.map((a, i) => (
             <div
               key={i}
-              className="grid grid-cols-[72px_1fr_auto] items-center gap-[18px] px-[18px] py-4 bg-secondary border-l-2 border-l-transparent hover:border-l-primary hover:bg-card transition-all"
+              className="grid grid-cols-[64px_1fr_auto] items-center gap-4 px-4 py-4 bg-card/60 border border-primary/15 border-l-2 border-l-transparent hover:border-l-primary hover:border-primary/50 transition-all rounded-sm"
             >
-              <div className="font-syne text-[10px] font-bold text-primary tracking-[0.1em]">{a.year}</div>
+              <div className="font-display text-[10px] font-bold text-primary tracking-[0.2em] uppercase">{a.year}</div>
               <div>
                 <div className="text-[13px] font-medium text-foreground mb-0.5">{a.title}</div>
                 <div className="text-[11px] font-light text-muted-foreground">{a.org}</div>
               </div>
-              <div className="text-[9px] font-semibold tracking-[0.1em] uppercase text-muted-foreground bg-foreground/[0.04] px-[9px] py-[3px] rounded-sm whitespace-nowrap">
+              <div className="font-display text-[9px] font-bold tracking-[0.18em] uppercase text-muted-foreground bg-background/40 border border-primary/15 px-2 py-1 rounded-sm whitespace-nowrap">
                 {a.role}
               </div>
             </div>
@@ -48,27 +43,29 @@ const Speaking = () => (
         </div>
       </div>
       <div className="reveal">
-        <div className="font-syne text-xs font-bold tracking-[0.12em] uppercase text-muted-foreground mb-[18px]">Speaking Topics</div>
-        <div className="flex flex-col gap-2 mb-8">
+        <div className="font-display text-[10px] font-bold tracking-[0.28em] uppercase text-muted-foreground mb-4">
+          // Topics.ls
+        </div>
+        <div className="flex flex-col gap-1.5 mb-8">
           {topics.map((t) => (
             <div
               key={t}
-              className="flex items-center gap-2.5 px-4 py-3 bg-secondary rounded-sm text-[13px] font-normal text-foreground/[0.68] hover:bg-card hover:text-foreground transition-all"
+              className="flex items-center gap-2.5 px-3 py-2.5 bg-card/40 border border-primary/10 rounded-sm text-[12.5px] font-normal text-foreground/[0.72] hover:border-primary/40 hover:text-foreground transition-all"
             >
               <span className="w-1 h-1 bg-primary rounded-full shrink-0" />
               {t}
             </div>
           ))}
         </div>
-        <div className="bg-background border border-primary/[0.12] border-l-[3px] border-l-primary p-5 rounded-r">
-          <div className="text-[9px] font-bold tracking-[0.2em] text-primary uppercase mb-2">Grit to Gear — Special Masterclass</div>
-          <div className="text-[13px] font-light text-foreground/[0.68] leading-[1.75]">
-            In partnership with <span className="text-foreground font-medium">Sherwyn Singh (Automagikal)</span>, exclusive founder scaling masterclasses available for institutions and alumni associations. Limited engagements. Enquire to book.
+        <div className="bg-card/60 border border-primary/25 border-l-[3px] border-l-primary p-5 rounded-sm">
+          <div className="font-display text-[9px] font-bold tracking-[0.28em] text-primary uppercase mb-2">Grit to Gear — Masterclass</div>
+          <div className="text-[13px] font-light text-foreground/[0.72] leading-[1.75]">
+            In partnership with <span className="text-foreground font-medium">Sherwyn Singh (Automagikal)</span>, exclusive founder scaling masterclasses for institutions and alumni associations. Limited engagements.
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </PanelSection>
 );
 
 export default Speaking;
