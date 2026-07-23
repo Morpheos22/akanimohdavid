@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,51 +6,44 @@
 
 @layer base {
   :root {
-    --background: 220 60% 7%;
-    --foreground: 0 0% 100%;
+    --background: 280 45% 5%;
+    --foreground: 300 15% 96%;
 
-    --card: 220 45% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 285 45% 7%;
+    --card-foreground: 300 15% 96%;
 
-    --popover: 220 45% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 285 45% 7%;
+    --popover-foreground: 300 15% 96%;
 
-    --primary: 200 100% 50%;
-    --primary-foreground: 220 60% 7%;
+    --primary: 292 84% 61%;
+    --primary-foreground: 280 45% 5%;
 
-    --secondary: 220 40% 14%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 290 40% 11%;
+    --secondary-foreground: 300 15% 96%;
 
-    --muted: 220 40% 14%;
-    --muted-foreground: 218 25% 62%;
+    --muted: 290 30% 12%;
+    --muted-foreground: 290 15% 60%;
 
-    --accent: 200 100% 50%;
-    --accent-foreground: 220 60% 7%;
+    --accent: 292 84% 61%;
+    --accent-foreground: 280 45% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 100% 50% / 0.1;
-    --input: 200 100% 50% / 0.1;
-    --ring: 200 100% 50%;
+    --border: 292 84% 61% / 0.14;
+    --input: 292 84% 61% / 0.14;
+    --ring: 292 84% 61%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    --navy: 220 60% 7%;
-    --navy-mid: 220 45% 8%;
-    --navy-light: 220 40% 14%;
-    --cyan: 200 100% 50%;
-    --grey: 218 25% 62%;
-    --grey-light: 0 0% 100% / 0.68;
-
-    --sidebar-background: 220 60% 7%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 200 100% 50%;
-    --sidebar-primary-foreground: 220 60% 7%;
-    --sidebar-accent: 220 40% 14%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 200 100% 50% / 0.08;
-    --sidebar-ring: 200 100% 50%;
+    --sidebar-background: 280 45% 5%;
+    --sidebar-foreground: 300 15% 96%;
+    --sidebar-primary: 292 84% 61%;
+    --sidebar-primary-foreground: 280 45% 5%;
+    --sidebar-accent: 290 40% 11%;
+    --sidebar-accent-foreground: 300 15% 96%;
+    --sidebar-border: 292 84% 61% / 0.1;
+    --sidebar-ring: 292 84% 61%;
   }
 }
 
@@ -66,8 +59,35 @@
 }
 
 @layer utilities {
-  .font-syne {
-    font-family: 'Syne', sans-serif;
+  .font-display {
+    font-family: 'Chakra Petch', sans-serif;
+    letter-spacing: 0.04em;
+  }
+  .font-syne { /* legacy alias — mapped to display */
+    font-family: 'Chakra Petch', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Hex mesh background */
+  .bg-hex-mesh {
+    background-color: hsl(var(--background));
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'><path d='M28 1l25 14v34L28 63 3 49V15z' fill='none' stroke='%23d946ef' stroke-opacity='0.09' stroke-width='1'/></svg>");
+    background-size: 56px 64px;
+  }
+  .bg-hex-dense {
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='42' viewBox='0 0 36 42'><path d='M18 1l16 9v22L18 41 2 32V10z' fill='none' stroke='%23d946ef' stroke-opacity='0.14' stroke-width='0.8'/></svg>");
+    background-size: 36px 42px;
+  }
+
+  .panel-glow {
+    background-image: radial-gradient(ellipse at 70% 40%, hsl(292 84% 61% / 0.10), transparent 65%);
+  }
+
+  .text-stroke-magenta {
+    -webkit-text-stroke: 1.5px hsl(292 84% 61% / 0.55);
+    color: transparent;
   }
 }
 
@@ -76,7 +96,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  opacity: 0.35;
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
@@ -93,7 +113,7 @@ body::before {
   transform: translateY(0);
 }
 
-/* Hero animations */
+/* Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
@@ -109,25 +129,45 @@ body::before {
   75% { transform: translate(44px, -14px) rotate(-4deg); }
   100% { transform: translate(80px, 0) rotate(0deg) scale(0); opacity: 0; }
 }
-
-.animate-fade-up {
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.4; }
+  10% { opacity: 1; }
+  22% { opacity: 0.75; }
+  24% { opacity: 1; }
 }
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-120px); }
+}
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
 .animate-fade-up-1 { animation-delay: 0.15s; }
 .animate-fade-up-2 { animation-delay: 0.3s; }
 .animate-fade-up-3 { animation-delay: 0.45s; }
 .animate-fade-up-4 { animation-delay: 0.6s; }
 .animate-fade-up-5 { animation-delay: 0.75s; }
 .animate-fade-up-6 { animation-delay: 0.9s; }
+.animate-pulse-dot { animation: pulse-dot 2s infinite; }
+.animate-flicker { animation: flicker 4s infinite; }
+.animate-drift { animation: drift 22s linear infinite; }
+.animate-scanline { animation: scanline 6s ease-in-out infinite; }
 
-.animate-pulse-dot {
-  animation: pulse-dot 2s infinite;
-}
+.rabbit-hopping { animation: hop 0.6s ease forwards; }
+.rabbit-hopping img { animation: hop 0.6s ease forwards; }
 
-.rabbit-hopping {
-  animation: hop 0.6s ease forwards;
-}
-.rabbit-hopping img {
-  animation: hop 0.6s ease forwards;
+/* Giant label used in panels */
+.panel-label {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(56px, 11vw, 180px);
+  line-height: 0.9;
+  color: hsl(300 15% 96% / 0.06);
+  -webkit-text-stroke: 1px hsl(292 84% 61% / 0.35);
 }
