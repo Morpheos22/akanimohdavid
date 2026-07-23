@@ -1,53 +1,108 @@
 
+# Machine-Delusions-Inspired Overhaul + Bio Update + Showcase
 
-## Akanimoh David — Portfolio Website (React Conversion + Updates)
+Two things combined: (1) the full visual overhaul into the dark hex-mesh / magenta-circuit panel aesthetic, and (2) content updates — new professional bio, revised title (Chief AI Officer), and a new Showcase section for creative work.
 
-Convert the uploaded HTML portfolio into a full React app with the following sections and changes:
+This is an inspired reinterpretation, not a copy of machinedelusions.com's assets or code.
 
-### Assets
-- **MetaBuilder logo** (uploaded logo.jpg) — used in navbar and footer
-- **White rabbit logo** (uploaded Morpheus rabbit image) — used in CTA section button
+## Design system (magenta circuit)
 
-### Sections & Components
+Palette:
+- Background `#0a0710`, panel `#160a1a`, deep plum `#3a1030`, accent magenta `#d946ef`
+- Mesh line `rgba(217,70,239,0.12)`
 
-1. **Navbar** — Fixed nav with MetaBuilder logo, section links (About, Services, Projects, Speaking, Reviews), and rabbit button to scroll to CTA
+Typography:
+- Display / labels: Chakra Petch (angular tech) via Google Fonts — uppercase, wide tracking
+- Body: keep DM Sans
+- Retire Syne
 
-2. **Hero Section** — Name, role ("AI Strategist & Ecosystem Architect"), bio, action buttons, stats (Ventures, Countries, etc.), portrait area with "Available for Engagements" tag
+Textures (CSS/SVG, no external images):
+- Site-wide hex-mesh background (repeating SVG hex pattern, ~2% opacity)
+- Reusable `<PanelDivider />` — thin scan-line band with drifting glyph/circuit strip and faint magenta chromatic line
+- Soft magenta radial glow per panel
+- Retire cyan glows
 
-3. **Who I Am (About)** — Company description, personal background, SIGMA Framework card, credentials list
-   - **Add**: "ElevenLabs Partner" as a new credential item
+Motion:
+- Section labels: subtle flicker/glitch on reveal
+- Divider glyph strip: slow horizontal drift
 
-4. **Services** — 3 service cards:
-   - **AI Workshops & Training**: Change price to **$50 per session**
-   - **Proposals & Pitch Decks**: Change price to **$20 per document**
-   - AI Strategy Consulting (unchanged)
+## Layout — stacked panels
 
-5. **The Sovereign Stack (Projects)** — Updated intro: *"A portfolio of AI-native ventures architected under or in collaboration with Metabuilder Solutions Limited."*
-   - **TrustScout**: Change status badge to **"Beta"**, funding to **"Pre-Seed"**
-   - **S.H.A.R.P.**: Change status badge to **"Production"**
-   - **Nichy & AfriFlow**: Update description to *"Two upcoming ventures within the Metabuilder & Automagikal sovereign stack. Nichy and AfriFlow are being architected as part of a deliberate infrastructure play for Africa's AI-native economy — alongside Small Axe, the fifth pillar of the stack."*
+Each section becomes a full-width panel (~85vh min on desktop), with a giant muted outlined section label on the left and content on the right, bracketed by scan-line dividers.
 
-6. **Speaking & Facilitation** — Update all dates from 2025 to **2026**
-   - S.H.A.R.P. Episode 1: Change to **"Abacus AI & Veta Origin feat. Ismail Waziri (Veta Origin)"**
+Panel map:
+1. Hero — name lockup, new title **"Chief AI Officer · Metabuilder Solutions Limited"**, portrait in hex frame, magenta status pill
+2. About — giant "ABOUT" label + rewritten bio (see Content below)
+3. Services — "SERVICES" label + service tiles restyled magenta
+4. Projects — "PORTFOLIO" label + existing ventures (TrustScout, S.H.A.R.P., Nichy & AfriFlow)
+5. **Showcase (new)** — "SHOWCASE" label + tabbed/filtered gallery grid for creative work
+6. Speaking — "STAGE" label + talks list
+7. Testimonials — "SIGNAL" label + terminal-style quote cards
+8. CTA — "CONNECT" label + magenta rabbit button, Calendly/mail/LinkedIn
+9. Footer — compact, magenta hairline top border
 
-7. **Testimonials** — 6 review cards (unchanged)
+Navbar: slim, uppercase Chakra Petch links, magenta hover underline, add "Showcase" link, keep rabbit CTA (recolored).
 
-8. **CTA Section** — "Ready to Go Down the Rabbit Hole?"
-   - Button uses the **white rabbit (Morpheus) image**
-   - On click: rabbit does a **hopping-away animation**, then reveals 3 contact options (Calendly, Email, LinkedIn)
+## Content updates
 
-9. **Footer** — MetaBuilder logo, copyright, social links
+About section — replace the current three intro paragraphs with the new bio (verbatim from the user):
+- Para 1: "David Akanimoh is a creative technologist, systems integrator, and the Chief AI Officer of Metabuilder Solutions Limited. Bridging a foundational background in political science and diplomacy with agile, self-taught engineering, David specializes in modern web development, AI video content creation, and architecting autonomous AI agent orchestration workflows and forensic verification solutions like the Voight-Kampff framework."
+- Para 2: "Operating out of Abuja, he combines deep systems thinking with cutting-edge digital craftsmanship to drive innovative software and multimedia projects. As an ecosystem builder and educator, he actively shapes the tech landscape across institutions like the University of Abuja and Veritas University, while scaling enterprise solutions through Metabuilder."
+- Keep the SIGMA Framework card and credentials list
+- Update the "Co-Founder" credential to "Chief AI Officer" and add "University of Abuja & Veritas University — Ecosystem Educator"
 
-### Design System
-- Dark navy theme (#080E1C, #0D1628, #131E35)
-- Cyan accent (#00B4FF)
-- Fonts: Syne (headings) + DM Sans (body)
-- Custom cursor, noise overlay, scroll-reveal animations
-- Responsive (mobile-friendly grid collapses)
+Hero — role line changes to "Chief AI Officer · Metabuilder Solutions Limited · Abuja, Nigeria". Update short pitch to match new bio tone.
 
-### Technical Approach
-- Split into reusable React components (Navbar, Hero, About, Services, Projects, Speaking, Testimonials, CTA, Footer)
-- Tailwind CSS for styling matching the existing design system
-- Scroll-reveal via Intersection Observer hook
-- Rabbit hop animation via CSS keyframes + React state toggle
+Navbar / Footer wording — reflect new title.
 
+## Showcase section (new)
+
+`src/components/portfolio/Showcase.tsx` + placeholder items in `src/data/showcase.ts`.
+
+Structure:
+- Section label "SHOWCASE", subtitle "Selected creative work — web, AI video, identity."
+- Filter pills: **All · Websites · AI Video · Logos & Identity · Other**
+- Bento-style grid (2-3 columns, mixed tile sizes) rendering items with:
+  - Thumbnail (image or looping muted mp4/webm for video)
+  - Overlay on hover: title, category tag, short caption, optional external link
+  - Video tiles autoplay muted/looped/inline; a small magenta "▶ VIDEO" corner tag
+- Empty-state placeholders shipped so the section looks complete; user can drop real media into `src/assets/showcase/` and swap entries in `showcase.ts`
+
+Data shape:
+```ts
+type ShowcaseItem = {
+  id: string;
+  title: string;
+  category: "web" | "video" | "logo" | "other";
+  media: { type: "image" | "video"; src: string; poster?: string };
+  caption?: string;
+  href?: string;
+  span?: "sm" | "md" | "lg"; // grid span
+};
+```
+
+Seed with 6 placeholder tiles (3 web, 2 AI video, 1 logo) using existing portrait/logo/rabbit assets as stand-ins, clearly labeled as placeholders in captions so the user knows to replace them.
+
+## Files
+
+Edit:
+- `src/index.css` — new tokens, hex-mesh + scan-line utilities, flicker/drift keyframes, font import swap
+- `tailwind.config.ts` — add `font-display` (Chakra Petch)
+- `src/components/portfolio/Navbar.tsx` — restyle + add Showcase link
+- `src/components/portfolio/Hero.tsx` — panel treatment + new title/pitch
+- `src/components/portfolio/About.tsx` — new bio paragraphs + updated credentials + panel styling
+- `src/components/portfolio/Services.tsx`, `Projects.tsx`, `Speaking.tsx`, `Testimonials.tsx`, `CTA.tsx`, `Footer.tsx` — panel styling, magenta accents
+- `src/pages/Index.tsx` — insert Showcase after Projects, wrap with dividers
+- `index.html` — title/description refresh
+
+Create:
+- `src/components/portfolio/PanelDivider.tsx`
+- `src/components/portfolio/PanelSection.tsx`
+- `src/components/portfolio/Showcase.tsx`
+- `src/data/showcase.ts`
+
+## Out of scope
+
+- No backend, routes, or business logic changes
+- No assets copied from machinedelusions.com
+- Real showcase media is placeholder until user provides files
