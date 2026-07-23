@@ -1,4 +1,4 @@
-import portrait from "@/assets/portrait.webp";
+import PanelSection from "./PanelSection";
 
 const services = [
   {
@@ -28,44 +28,41 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="py-24 px-[6vw] bg-background relative overflow-hidden">
-    <img src={portrait} alt="" className="absolute bottom-0 left-0 w-[300px] opacity-[0.03] brightness-0 invert pointer-events-none select-none" />
-    <div className="flex items-center gap-3 mb-3.5 reveal">
-      <div className="w-[26px] h-px bg-primary" />
-      <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-primary">What I Do</span>
-    </div>
-    <h2 className="font-syne text-[clamp(30px,3.8vw,50px)] font-extrabold leading-[1.05] tracking-tight mb-3.5 reveal">
-      Services Built<br />for Impact.
-    </h2>
-    <p className="text-[15px] font-light text-foreground/[0.68] max-w-[500px] leading-[1.75] mb-14 reveal">
+  <PanelSection id="services" label="Services" eyebrow="What I Do">
+    <p className="text-[15px] font-light text-foreground/[0.72] max-w-[520px] leading-[1.8] mb-10 reveal">
       Practical, high-value engagements for individuals, SMEs, NGOs, and institutions ready to operate in the AI era.
     </p>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
       {services.map((s) => (
         <div
           key={s.num}
-          className="reveal bg-secondary p-[38px_30px] relative overflow-hidden group hover:bg-card transition-colors"
+          className="reveal relative bg-card/60 border border-primary/20 p-8 rounded-sm overflow-hidden group hover:border-primary/60 hover:-translate-y-1 transition-all"
         >
-          <div className="absolute top-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-left group-hover:scale-x-100 transition-transform" />
-          <div className="font-syne text-[10px] font-bold tracking-[0.2em] text-primary mb-[22px] opacity-60">{s.num}</div>
-          <span className="text-[26px] mb-[18px] block">{s.icon}</span>
-          <div className="font-syne text-[19px] font-bold mb-3 leading-[1.2]">{s.title}</div>
-          <p className="text-[13.5px] font-light text-foreground/[0.68] leading-[1.75] mb-[22px]">{s.desc}</p>
-          <div className="font-syne text-xs font-bold text-primary tracking-[0.05em]">{s.price}</div>
-          <div className="flex flex-wrap gap-[5px] mt-[18px]">
-            {s.tags.map((t) => (
-              <span
-                key={t}
-                className="text-[9px] font-medium tracking-[0.1em] uppercase text-muted-foreground bg-foreground/[0.04] border border-foreground/[0.07] px-[9px] py-[3px] rounded-sm"
-              >
-                {t}
-              </span>
-            ))}
+          <div className="absolute inset-0 bg-hex-dense opacity-20 pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-px bg-primary scale-x-0 origin-left group-hover:scale-x-100 transition-transform" />
+          <div className="relative">
+            <div className="flex items-center justify-between mb-5">
+              <span className="font-display text-[10px] font-bold tracking-[0.28em] text-primary">{s.num}</span>
+              <span className="text-[22px] opacity-70">{s.icon}</span>
+            </div>
+            <div className="font-display text-[17px] font-bold mb-3 leading-[1.2] uppercase">{s.title}</div>
+            <p className="text-[13px] font-light text-foreground/[0.68] leading-[1.75] mb-5">{s.desc}</p>
+            <div className="font-display text-[11px] font-bold text-primary tracking-[0.12em] uppercase mb-4">{s.price}</div>
+            <div className="flex flex-wrap gap-1.5">
+              {s.tags.map((t) => (
+                <span
+                  key={t}
+                  className="font-display text-[9px] font-medium tracking-[0.15em] uppercase text-muted-foreground bg-background/40 border border-primary/15 px-2 py-1 rounded-sm"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       ))}
     </div>
-  </section>
+  </PanelSection>
 );
 
 export default Services;

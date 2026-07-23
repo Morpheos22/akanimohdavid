@@ -1,6 +1,6 @@
 import { useState } from "react";
 import rabbit from "@/assets/rabbit.jpg";
-import portrait from "@/assets/portrait.webp";
+import PanelSection from "./PanelSection";
 
 const CTA = () => {
   const [hopping, setHopping] = useState(false);
@@ -13,30 +13,27 @@ const CTA = () => {
   };
 
   return (
-    <section id="consult" className="bg-background py-[120px] px-[6vw] text-center relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse,hsl(200_100%_50%/0.07)_0%,transparent_65%)] pointer-events-none" />
-      <img src={portrait} alt="" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] opacity-[0.04] brightness-0 invert pointer-events-none select-none" />
-      <div className="relative z-10">
-        <div className="text-[10px] font-semibold tracking-[0.25em] uppercase text-primary mb-[18px]">Let's Build Together</div>
-        <h2 className="font-syne text-[clamp(34px,5vw,62px)] font-extrabold leading-[1.05] tracking-tight mb-[18px]">
-          Ready to Go<br /><span className="text-primary">Down the Rabbit Hole?</span>
-        </h2>
-        <p className="text-[15px] font-light text-foreground/[0.68] max-w-[460px] mx-auto mb-12 leading-[1.75]">
+    <PanelSection id="consult" label="Connect" eyebrow="Let's Build Together">
+      <div className="text-center max-w-[600px] mx-auto">
+        <h3 className="font-display text-[clamp(28px,4vw,48px)] font-bold leading-[1.05] uppercase tracking-tight mb-4 reveal">
+          Ready to Go<br /><span className="text-stroke-magenta">Down the Rabbit Hole?</span>
+        </h3>
+        <p className="text-[14px] font-light text-foreground/[0.7] max-w-[460px] mx-auto mb-10 leading-[1.75] reveal">
           Book a free 20-minute consultation, send a mail, or connect on LinkedIn. Pick your door.
         </p>
 
-        <div className="relative inline-block">
+        <div className="relative inline-block reveal">
           <button
             onClick={triggerRabbit}
-            className={`flex items-center gap-3.5 bg-transparent border border-primary/[0.35] text-foreground font-syne text-[13px] font-bold tracking-[0.12em] uppercase px-8 py-4 rounded-sm hover:bg-primary/[0.06] hover:border-primary hover:shadow-[0_0_40px_hsl(200_100%_50%/0.15)] transition-all relative z-10 ${hopping ? "rabbit-hopping opacity-0 pointer-events-none" : ""}`}
+            className={`flex items-center gap-3 bg-transparent border border-primary/50 text-foreground font-display text-[11px] font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-sm hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_40px_hsl(292_84%_61%/0.3)] transition-all relative z-10 ${hopping ? "rabbit-hopping opacity-0 pointer-events-none" : ""}`}
             style={hopping ? { transition: "opacity 0.1s 0.45s" } : {}}
           >
-            <img src={rabbit} alt="White Rabbit" className="w-9 h-9 object-contain invert mix-blend-screen" />
+            <img src={rabbit} alt="White Rabbit" className="w-8 h-8 object-contain invert mix-blend-screen" />
             Follow the White Rabbit
           </button>
 
           <div
-            className={`absolute top-1/2 left-1/2 flex gap-3.5 whitespace-nowrap transition-all duration-400 ${
+            className={`absolute top-1/2 left-1/2 flex gap-3 whitespace-nowrap transition-all duration-500 ${
               showOptions
                 ? "opacity-100 -translate-x-1/2 -translate-y-1/2 scale-100 pointer-events-auto"
                 : "opacity-0 -translate-x-1/2 -translate-y-1/2 scale-[0.8] pointer-events-none"
@@ -46,28 +43,28 @@ const CTA = () => {
               href="https://calendly.com/morphylee22"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-[22px] py-3 rounded-sm font-syne text-[11px] font-bold tracking-[0.1em] uppercase bg-primary text-primary-foreground shadow-[0_0_30px_hsl(200_100%_50%/0.3)] hover:-translate-y-[3px] transition-transform"
+              className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-primary text-primary-foreground shadow-[0_0_30px_hsl(292_84%_61%/0.4)] hover:-translate-y-1 transition-transform"
             >
-              📅 Book on Calendly
+              📅 Calendly
             </a>
             <a
               href="mailto:morpheos@cc.cc"
-              className="flex items-center gap-2 px-[22px] py-3 rounded-sm font-syne text-[11px] font-bold tracking-[0.1em] uppercase bg-secondary text-foreground border border-primary/25 hover:-translate-y-[3px] transition-transform"
+              className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-secondary text-foreground border border-primary/40 hover:-translate-y-1 transition-transform"
             >
-              ✉ morpheos@cc.cc
+              ✉ Email
             </a>
             <a
               href="https://www.linkedin.com/in/david-akanimoh"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-[22px] py-3 rounded-sm font-syne text-[11px] font-bold tracking-[0.1em] uppercase bg-[#0A66C2] text-foreground hover:-translate-y-[3px] transition-transform"
+              className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-[#0A66C2] text-foreground hover:-translate-y-1 transition-transform"
             >
               👥 LinkedIn
             </a>
           </div>
         </div>
       </div>
-    </section>
+    </PanelSection>
   );
 };
 
