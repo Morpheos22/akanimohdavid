@@ -1,108 +1,72 @@
+## Restructure Portfolio + Add Websites, IG Reels, and Socials
 
-# Machine-Delusions-Inspired Overhaul + Bio Update + Showcase
+### 1. Reorder sections
+`src/pages/Index.tsx`: move Portfolio to appear right after About. New order:
+Hero → About → **Portfolio** → Services → Speaking → Testimonials → CTA → Footer.
+Delete the standalone `Showcase` section and its divider from the page.
 
-Two things combined: (1) the full visual overhaul into the dark hex-mesh / magenta-circuit panel aesthetic, and (2) content updates — new professional bio, revised title (Chief AI Officer), and a new Showcase section for creative work.
+### 2. Deprecate Showcase, merge into Portfolio
+- Delete `src/components/portfolio/Showcase.tsx` and `src/data/showcase.ts`.
+- Rebuild `src/components/portfolio/Projects.tsx` as the new Portfolio with two sub-sections inside a single `PanelSection` (label "Portfolio"):
+  1. **Websites** — filter/tab or simply a titled subgrid
+  2. **AI Video** — titled subgrid
+  Remove the Logos & Identity and Other categories entirely.
 
-This is an inspired reinterpretation, not a copy of machinedelusions.com's assets or code.
+### 3. Websites subsection
+New data file `src/data/websites.ts` with entries:
 
-## Design system (magenta circuit)
+| Title | URL | Summary |
+|---|---|---|
+| Metabuilder | metabuildersolutions.org | Corporate landing for Metabuilder Solutions Limited — the parent studio architecting the AI-native sovereign stack. |
+| TrustScout | trustscout.dev | Africa's first buyer-initiated forensic vendor verification engine for social commerce, powered by the Voight-Kampff multi-agent framework. |
+| Nichy | nichy.vercel.app | A niche discovery and micro-community platform in the Metabuilder venture portfolio. |
+| AfriFlow | afriflowfund.vercel.app | Capital-flow infrastructure venture — connecting African founders to funding rails. |
+| Jayralis | jayralis.fyi | Company site built for Jayralis — brand, product, and story surface. |
 
-Palette:
-- Background `#0a0710`, panel `#160a1a`, deep plum `#3a1030`, accent magenta `#d946ef`
-- Mesh line `rgba(217,70,239,0.12)`
+Card design (magenta panel style, matches existing tiles):
+- Thumbnail: live screenshot via **Microlink's free screenshot API** — `https://api.microlink.io/?url={url}&screenshot=true&meta=false&embed=screenshot.url`. No key required, cached at their edge. Fallback: Google favicon service `https://www.google.com/s2/favicons?domain={host}&sz=128` shown as an icon chip in the top-left of every card regardless.
+- Title, one-line summary, external-link arrow, opens site in new tab.
+- Grid: `md:grid-cols-2 lg:grid-cols-3`, aspect-video thumbnails.
 
-Typography:
-- Display / labels: Chakra Petch (angular tech) via Google Fonts — uppercase, wide tracking
-- Body: keep DM Sans
-- Retire Syne
+### 4. AI Video subsection
+Description line (professional rewrite of the user's copy):
+> "These AI-generated films showcase my work in avatar creation, narrative storytelling, and sustained visual consistency for brand-grade output."
 
-Textures (CSS/SVG, no external images):
-- Site-wide hex-mesh background (repeating SVG hex pattern, ~2% opacity)
-- Reusable `<PanelDivider />` — thin scan-line band with drifting glyph/circuit strip and faint magenta chromatic line
-- Soft magenta radial glow per panel
-- Retire cyan glows
+Data file `src/data/aiVideos.ts`:
+- Video 1 — Runway Model — `instagram.com/reel/DbDMbcJuon1/`
+- Video 2 — Final Form — `instagram.com/reel/DbB0GIWuehX/`
+- Video 3 — Blending Style — `instagram.com/reel/Da7-MFRsEq8/`
+- Video 4 — Avatar Kanye — `instagram.com/reel/Da5VK7KMkLz/`
 
-Motion:
-- Section labels: subtle flicker/glitch on reveal
-- Divider glyph strip: slow horizontal drift
+In-page player approach (no redirect): use **Instagram's official embed** via `<blockquote class="instagram-media" data-instgrm-permalink="...">` and lazy-load `https://www.instagram.com/embed.js`, then call `window.instgrm.Embeds.process()`. This renders each reel inline with IG's own player — user can watch without leaving the page. First frame acts as the thumbnail.
 
-## Layout — stacked panels
+New component `src/components/portfolio/InstagramReel.tsx` handling the blockquote + one-time script load. Rendered in a responsive 3-col grid (or 2-col on md). Small magenta "▶ REEL" corner tag preserved for aesthetic consistency.
 
-Each section becomes a full-width panel (~85vh min on desktop), with a giant muted outlined section label on the left and content on the right, bracketed by scan-line dividers.
+Trade-off noted: IG embeds require their script and network access to instagram.com; if the client blocks it, the blockquote falls back to a link to the reel. This is the best in-page option without hosting the video files locally.
 
-Panel map:
-1. Hero — name lockup, new title **"Chief AI Officer · Metabuilder Solutions Limited"**, portrait in hex frame, magenta status pill
-2. About — giant "ABOUT" label + rewritten bio (see Content below)
-3. Services — "SERVICES" label + service tiles restyled magenta
-4. Projects — "PORTFOLIO" label + existing ventures (TrustScout, S.H.A.R.P., Nichy & AfriFlow)
-5. **Showcase (new)** — "SHOWCASE" label + tabbed/filtered gallery grid for creative work
-6. Speaking — "STAGE" label + talks list
-7. Testimonials — "SIGNAL" label + terminal-style quote cards
-8. CTA — "CONNECT" label + magenta rabbit button, Calendly/mail/LinkedIn
-9. Footer — compact, magenta hairline top border
+### 5. Connect / CTA — add X and Instagram
+`src/components/portfolio/CTA.tsx`: extend the revealed rabbit-hole options with two new pill buttons matching existing style:
+- **X** → `https://x.com/Morpheos_sc`
+- **IG** → `https://www.instagram.com/morpheos_sc`
+Keep Calendly, Email, LinkedIn. Wrap in `flex-wrap` so mobile stacks cleanly.
 
-Navbar: slim, uppercase Chakra Petch links, magenta hover underline, add "Showcase" link, keep rabbit CTA (recolored).
-
-## Content updates
-
-About section — replace the current three intro paragraphs with the new bio (verbatim from the user):
-- Para 1: "David Akanimoh is a creative technologist, systems integrator, and the Chief AI Officer of Metabuilder Solutions Limited. Bridging a foundational background in political science and diplomacy with agile, self-taught engineering, David specializes in modern web development, AI video content creation, and architecting autonomous AI agent orchestration workflows and forensic verification solutions like the Voight-Kampff framework."
-- Para 2: "Operating out of Abuja, he combines deep systems thinking with cutting-edge digital craftsmanship to drive innovative software and multimedia projects. As an ecosystem builder and educator, he actively shapes the tech landscape across institutions like the University of Abuja and Veritas University, while scaling enterprise solutions through Metabuilder."
-- Keep the SIGMA Framework card and credentials list
-- Update the "Co-Founder" credential to "Chief AI Officer" and add "University of Abuja & Veritas University — Ecosystem Educator"
-
-Hero — role line changes to "Chief AI Officer · Metabuilder Solutions Limited · Abuja, Nigeria". Update short pitch to match new bio tone.
-
-Navbar / Footer wording — reflect new title.
-
-## Showcase section (new)
-
-`src/components/portfolio/Showcase.tsx` + placeholder items in `src/data/showcase.ts`.
-
-Structure:
-- Section label "SHOWCASE", subtitle "Selected creative work — web, AI video, identity."
-- Filter pills: **All · Websites · AI Video · Logos & Identity · Other**
-- Bento-style grid (2-3 columns, mixed tile sizes) rendering items with:
-  - Thumbnail (image or looping muted mp4/webm for video)
-  - Overlay on hover: title, category tag, short caption, optional external link
-  - Video tiles autoplay muted/looped/inline; a small magenta "▶ VIDEO" corner tag
-- Empty-state placeholders shipped so the section looks complete; user can drop real media into `src/assets/showcase/` and swap entries in `showcase.ts`
-
-Data shape:
-```ts
-type ShowcaseItem = {
-  id: string;
-  title: string;
-  category: "web" | "video" | "logo" | "other";
-  media: { type: "image" | "video"; src: string; poster?: string };
-  caption?: string;
-  href?: string;
-  span?: "sm" | "md" | "lg"; // grid span
-};
-```
-
-Seed with 6 placeholder tiles (3 web, 2 AI video, 1 logo) using existing portrait/logo/rabbit assets as stand-ins, clearly labeled as placeholders in captions so the user knows to replace them.
-
-## Files
+### Files
 
 Edit:
-- `src/index.css` — new tokens, hex-mesh + scan-line utilities, flicker/drift keyframes, font import swap
-- `tailwind.config.ts` — add `font-display` (Chakra Petch)
-- `src/components/portfolio/Navbar.tsx` — restyle + add Showcase link
-- `src/components/portfolio/Hero.tsx` — panel treatment + new title/pitch
-- `src/components/portfolio/About.tsx` — new bio paragraphs + updated credentials + panel styling
-- `src/components/portfolio/Services.tsx`, `Projects.tsx`, `Speaking.tsx`, `Testimonials.tsx`, `CTA.tsx`, `Footer.tsx` — panel styling, magenta accents
-- `src/pages/Index.tsx` — insert Showcase after Projects, wrap with dividers
-- `index.html` — title/description refresh
+- `src/pages/Index.tsx` — reorder, drop Showcase
+- `src/components/portfolio/Projects.tsx` — full rewrite as Portfolio (Websites + AI Video)
+- `src/components/portfolio/CTA.tsx` — add X + IG
 
 Create:
-- `src/components/portfolio/PanelDivider.tsx`
-- `src/components/portfolio/PanelSection.tsx`
+- `src/data/websites.ts`
+- `src/data/aiVideos.ts`
+- `src/components/portfolio/InstagramReel.tsx`
+
+Delete:
 - `src/components/portfolio/Showcase.tsx`
 - `src/data/showcase.ts`
 
-## Out of scope
+Navbar: remove the "Showcase" link if present; keep "Portfolio" pointing to `#projects`.
 
-- No backend, routes, or business logic changes
-- No assets copied from machinedelusions.com
-- Real showcase media is placeholder until user provides files
+### Out of scope
+- No backend changes, no self-hosted video files, no design-system changes beyond reusing existing magenta panel tokens.
