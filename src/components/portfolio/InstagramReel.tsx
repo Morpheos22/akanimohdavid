@@ -37,7 +37,7 @@ const InstagramReel = ({ permalink, title }: Props) => {
 
   return (
     <div className="reveal relative bg-card border border-primary/20 rounded-sm overflow-hidden hover:border-primary/60 transition-all">
-      <div className="absolute top-3 right-3 z-10 font-display text-[9px] font-bold tracking-[0.2em] uppercase text-primary bg-background/70 border border-primary/40 px-2 py-1 rounded-sm pointer-events-none">
+      <div className="absolute top-3 left-3 z-10 font-display text-[9px] font-bold tracking-[0.2em] uppercase text-primary bg-background/70 border border-primary/40 px-2 py-1 rounded-sm pointer-events-none">
         ▶ Reel
       </div>
       <div ref={ref} className="ig-embed-wrap p-3">

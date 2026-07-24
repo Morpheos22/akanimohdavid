@@ -16,6 +16,14 @@ export const websites: WebsiteItem[] = [
       "Corporate landing for Metabuilder Solutions Limited — the parent studio architecting the AI-native sovereign stack.",
   },
   {
+    id: "pitch-perfect",
+    title: "Pitch Perfect",
+    url: "https://pitchcoachai.tech/",
+    domain: "pitchcoachai.tech",
+    summary:
+      "AI-powered pitch coaching platform helping founders sharpen delivery, structure, and investor-ready storytelling.",
+  },
+  {
     id: "trustscout",
     title: "TrustScout",
     url: "https://trustscout.dev/",
