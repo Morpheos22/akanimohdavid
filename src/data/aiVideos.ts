@@ -21,8 +21,8 @@ export const aiVideos: AiVideoItem[] = [
     permalink: "https://www.instagram.com/reel/Da7-MFRsEq8/",
   },
   {
-    id: "avatar-kanye",
-    title: "Avatar Kanye",
+    id: "avatar-kayne",
+    title: "Avatar Kayne",
     permalink: "https://www.instagram.com/reel/Da5VK7KMkLz/",
   },
 ];
