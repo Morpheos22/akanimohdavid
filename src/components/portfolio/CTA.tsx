@@ -37,7 +37,7 @@ const CTA = () => {
               showOptions
                 ? "opacity-100 -translate-x-1/2 -translate-y-1/2 scale-100 pointer-events-auto"
                 : "opacity-0 -translate-x-1/2 -translate-y-1/2 scale-[0.8] pointer-events-none"
-            } flex-col sm:flex-row items-center`}
+            } flex-col sm:flex-row flex-wrap justify-center items-center`}
           >
             <a
               href="https://calendly.com/morphylee22"
