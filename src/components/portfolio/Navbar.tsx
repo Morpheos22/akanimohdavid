@@ -3,9 +3,8 @@ import rabbit from "@/assets/rabbit.jpg";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
   { href: "#projects", label: "Portfolio" },
-  { href: "#showcase", label: "Showcase" },
+  { href: "#services", label: "Services" },
   { href: "#speaking", label: "Stage" },
   { href: "#testimonials", label: "Signal" },
 ];

@@ -1,80 +1,96 @@
 import PanelSection from "./PanelSection";
+import InstagramReel from "./InstagramReel";
+import { websites } from "@/data/websites";
+import { aiVideos } from "@/data/aiVideos";
+
+const shot = (url: string) =>
+  `https://api.microlink.io/?url=${encodeURIComponent(
+    url
+  )}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800`;
+
+const favicon = (domain: string) =>
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
 const Projects = () => (
   <PanelSection id="projects" label="Portfolio" eyebrow="What I'm Building">
-    <p className="text-[15px] font-light text-foreground/[0.72] max-w-[520px] leading-[1.8] mb-10 reveal">
-      A portfolio of AI-native ventures architected under or in collaboration with Metabuilder Solutions Limited.
+    <p className="text-[15px] font-light text-foreground/[0.72] max-w-[560px] leading-[1.8] mb-12 reveal">
+      A portfolio of AI-native ventures and creative output — websites shipped under Metabuilder Solutions Limited, and AI films exploring avatar, story, and brand.
     </p>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {/* TrustScout — Featured */}
-      <div className="reveal md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10 bg-card/60 border border-primary/20 p-8 rounded-sm items-center hover:border-primary/60 hover:-translate-y-1 transition-all relative overflow-hidden">
-        <div className="absolute inset-0 bg-hex-dense opacity-20 pointer-events-none" />
-        <div className="relative">
-          <div className="inline-flex items-center gap-1.5 font-display text-[9px] font-bold tracking-[0.2em] uppercase text-primary bg-primary/15 border border-primary/40 px-3 py-1 rounded-sm mb-5">
-            <span className="w-[5px] h-[5px] bg-primary rounded-full animate-pulse-dot" /> Beta
-          </div>
-          <div className="font-display text-[26px] font-bold mb-3 leading-[1.1] uppercase">TrustScout</div>
-          <p className="text-[13.5px] font-light text-foreground/[0.72] leading-[1.8] mb-5">
-            Africa's first buyer-initiated forensic vendor verification engine for social commerce. Powered by the Voight-Kampff multi-agent AI framework — four specialised agents (ZHORA, RACHEL, SEBASTIAN, DECKARD) working in concert to surface truth in African digital commerce.
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {["FastAPI", "Z.ai GLM", "Supabase", "Paystack", "Railway", "Lovable", "Cloudflare"].map((t) => (
-              <span key={t} className="font-display text-[9px] font-medium tracking-[0.15em] uppercase text-muted-foreground bg-background/40 border border-primary/15 px-2 py-1 rounded-sm">{t}</span>
-            ))}
-          </div>
-        </div>
-        <div className="relative flex flex-col gap-3">
-          {[
-            { label: "Framework", value: "Voight-Kampff — ZHORA, RACHEL, SEBASTIAN, DECKARD" },
-            { label: "Live At", value: "trustscout.dev" },
-            { label: "Funding Active", value: "Pre-Seed" },
-            { label: "AI Partnership", value: "Z.ai GLM — Startup Credits & Partner Status" },
-          ].map((m) => (
-            <div key={m.label} className="px-4 py-3 bg-background/60 rounded-sm border-l-2 border-l-primary">
-              <div className="font-display text-[9px] font-bold tracking-[0.22em] uppercase text-primary mb-1">{m.label}</div>
-              <div className="text-[12.5px] font-normal text-foreground/[0.75]">{m.value}</div>
+    {/* Websites */}
+    <div className="mb-16">
+      <div className="flex items-center gap-3 mb-6 reveal">
+        <span className="font-display text-[10px] font-bold tracking-[0.28em] uppercase text-primary">
+          / Websites
+        </span>
+        <span className="flex-1 h-px bg-primary/20" />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {websites.map((site) => (
+          <a
+            key={site.id}
+            href={site.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reveal group relative flex flex-col bg-card/60 border border-primary/20 rounded-sm overflow-hidden hover:border-primary/60 hover:-translate-y-1 transition-all"
+          >
+            <div className="relative aspect-video bg-background/60 overflow-hidden">
+              <img
+                src={shot(site.url)}
+                alt={`${site.title} screenshot`}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
+              />
+              <div className="absolute inset-0 bg-hex-dense opacity-20 mix-blend-overlay pointer-events-none" />
+              <div className="absolute top-3 left-3 flex items-center gap-2 bg-background/70 border border-primary/30 rounded-sm px-2 py-1">
+                <img
+                  src={favicon(site.domain)}
+                  alt=""
+                  className="w-4 h-4"
+                />
+                <span className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
+                  {site.domain}
+                </span>
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="p-5 flex-1 flex flex-col">
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="font-display text-[16px] font-bold uppercase leading-tight text-foreground">
+                  {site.title}
+                </div>
+                <span className="font-display text-primary text-[14px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </div>
+              <p className="text-[12.5px] font-light text-foreground/70 leading-[1.7]">
+                {site.summary}
+              </p>
+            </div>
+          </a>
+        ))}
       </div>
+    </div>
 
-      {/* S.H.A.R.P. */}
-      <div className="reveal bg-card/60 border border-primary/20 p-8 rounded-sm hover:border-primary/60 hover:-translate-y-1 transition-all relative overflow-hidden">
-        <div className="absolute inset-0 bg-hex-dense opacity-20 pointer-events-none" />
-        <div className="relative">
-          <div className="inline-flex items-center gap-1.5 font-display text-[9px] font-bold tracking-[0.2em] uppercase text-primary bg-primary/15 border border-primary/40 px-3 py-1 rounded-sm mb-5">
-            Production
-          </div>
-          <div className="font-display text-[24px] font-bold mb-3 leading-[1.1] uppercase">S.H.A.R.P.</div>
-          <p className="text-[13.5px] font-light text-foreground/[0.72] leading-[1.8] mb-5">
-            Sovereign Humans Auditing Real Products. A biweekly AI tool review show co-hosted with Sherwyn Singh. Two editorial sections: <strong className="text-foreground font-medium">ATHENA</strong> (global AI tools stress-tested against African realities) and <strong className="text-foreground font-medium">NUBIA</strong> (African-built AI founders spotlight).
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {["Media", "AI Reviews", "ATHENA", "NUBIA", "Africa Focus"].map((t) => (
-              <span key={t} className="font-display text-[9px] font-medium tracking-[0.15em] uppercase text-muted-foreground bg-background/40 border border-primary/15 px-2 py-1 rounded-sm">{t}</span>
-            ))}
-          </div>
-        </div>
+    {/* AI Video */}
+    <div>
+      <div className="flex items-center gap-3 mb-4 reveal">
+        <span className="font-display text-[10px] font-bold tracking-[0.28em] uppercase text-primary">
+          / AI Video
+        </span>
+        <span className="flex-1 h-px bg-primary/20" />
       </div>
+      <p className="text-[13.5px] font-light text-foreground/70 max-w-[620px] leading-[1.8] mb-8 reveal">
+        These AI-generated films showcase my work in avatar creation, narrative storytelling, and sustained visual consistency for brand-grade output.
+      </p>
 
-      {/* Nichy & AfriFlow */}
-      <div className="reveal bg-card/60 border border-primary/20 p-8 rounded-sm hover:border-primary/60 hover:-translate-y-1 transition-all relative overflow-hidden">
-        <div className="absolute inset-0 bg-hex-dense opacity-20 pointer-events-none" />
-        <div className="relative">
-          <div className="inline-flex items-center gap-1.5 font-display text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground bg-muted/30 border border-primary/20 px-3 py-1 rounded-sm mb-5">
-            In Development
-          </div>
-          <div className="font-display text-[24px] font-bold mb-3 leading-[1.1] uppercase">Nichy & AfriFlow</div>
-          <p className="text-[13.5px] font-light text-foreground/[0.72] leading-[1.8] mb-5">
-            Two upcoming ventures within the Metabuilder & Automagikal sovereign stack. Nichy and AfriFlow are being architected as part of a deliberate infrastructure play for Africa's AI-native economy — alongside Small Axe, the fifth pillar of the stack.
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {["Nichy", "AfriFlow", "Small Axe", "Sovereign Stack"].map((t) => (
-              <span key={t} className="font-display text-[9px] font-medium tracking-[0.15em] uppercase text-muted-foreground bg-background/40 border border-primary/15 px-2 py-1 rounded-sm">{t}</span>
-            ))}
-          </div>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {aiVideos.map((v) => (
+          <InstagramReel key={v.id} permalink={v.permalink} title={v.title} />
+        ))}
       </div>
     </div>
   </PanelSection>
