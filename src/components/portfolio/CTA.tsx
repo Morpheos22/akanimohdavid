@@ -37,7 +37,7 @@ const CTA = () => {
               showOptions
                 ? "opacity-100 -translate-x-1/2 -translate-y-1/2 scale-100 pointer-events-auto"
                 : "opacity-0 -translate-x-1/2 -translate-y-1/2 scale-[0.8] pointer-events-none"
-            } flex-col sm:flex-row items-center`}
+            } flex-col sm:flex-row flex-wrap justify-center items-center`}
           >
             <a
               href="https://calendly.com/morphylee22"
@@ -60,6 +60,22 @@ const CTA = () => {
               className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-[#0A66C2] text-foreground hover:-translate-y-1 transition-transform"
             >
               👥 LinkedIn
+            </a>
+            <a
+              href="https://x.com/Morpheos_sc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-foreground text-background hover:-translate-y-1 transition-transform"
+            >
+              𝕏 X
+            </a>
+            <a
+              href="https://www.instagram.com/morpheos_sc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-sm font-display text-[10px] font-bold tracking-[0.18em] uppercase bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-foreground hover:-translate-y-1 transition-transform"
+            >
+              📸 Instagram
             </a>
           </div>
         </div>
